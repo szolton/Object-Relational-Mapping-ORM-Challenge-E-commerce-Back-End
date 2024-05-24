@@ -15,13 +15,17 @@ router.get('/', (req, res) => {
       },
       {
         model: Tag,
+        as: 'tags', // Update the alias to match the association alias
         through: ProductTag,
         attributes: ['id', 'tag_name']
       }
     ]
   })
     .then((products) => res.status(200).json(products))
-    .catch((err) => res.status(500).json(err));
+    .catch((err) => {
+      console.error(err); // Log the error message to the console
+      res.status(500).json(err); // Return a 500 status with the error message
+    });
 });
 
 // get one product
@@ -39,6 +43,7 @@ router.get('/:id', (req, res) => {
       },
       {
         model: Tag,
+        as: 'tags', // Update the alias to match the association alias
         through: ProductTag,
         attributes: ['id', 'tag_name']
       }
@@ -51,7 +56,10 @@ router.get('/:id', (req, res) => {
       }
       res.status(200).json(product);
     })
-    .catch((err) => res.status(500).json(err));
+    .catch((err) => {
+      console.error(err); // Log the error message to the console
+      res.status(500).json(err); // Return a 500 status with the error message
+    });
 });
 
 // create new product
@@ -81,8 +89,8 @@ router.post('/', (req, res) => {
     })
     .then((productTagIds) => res.status(200).json(productTagIds))
     .catch((err) => {
-      console.log(err);
-      res.status(400).json(err);
+      console.error(err); // Log the error message to the console
+      res.status(400).json(err); // Return a 400 status with the error message
     });
 });
 
@@ -126,8 +134,8 @@ router.put('/:id', (req, res) => {
       return res.json(product);
     })
     .catch((err) => {
-      // console.log(err);
-      res.status(400).json(err);
+      console.error(err); // Log the error message to the console
+      res.status(400).json(err); // Return a 400 status with the error message
     });
 });
 
@@ -145,7 +153,10 @@ router.delete('/:id', (req, res) => {
       }
       res.status(200).json({ message: 'Product deleted successfully' });
     })
-    .catch((err) => res.status(500).json(err));
+    .catch((err) => {
+      console.error(err); // Log the error message to the console
+      res.status(500).json(err); // Return a 500 status with the error message
+    });
 });
 
 module.exports = router;
