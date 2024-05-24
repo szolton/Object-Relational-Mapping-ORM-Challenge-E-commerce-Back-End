@@ -1,19 +1,15 @@
 require('dotenv').config();
 const express = require('express');
 const routes = require('./routes');
-const { Sequelize } = require('sequelize');
+const sequelize = require('./config/connection'); // Use the configured instance
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const sequelize = new Sequelize('ecommerce', 'root', 'password', {
-  host: 'localhost',
-  dialect: 'mysql'
-});
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Register routes
 app.use(routes);
 
 // Test the database connection
