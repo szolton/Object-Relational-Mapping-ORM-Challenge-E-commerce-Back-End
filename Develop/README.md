@@ -21,8 +21,6 @@ You can see in this screenshot some of the different errors I had to work throug
 
 Basic youtube videos like this one really helped me visualize how to use insomnia for the project: https://www.youtube.com/watch?v=b3jgsfbJijw
 
-![Data screenshot](./assets/images/data%20screenshot%20-2.png)
-
 Here's a screenshot of how Insomnia pulled the tags that you'd also see in the demo video:
 
 ![insomnia-tags](./assets/images/tags.png)
